@@ -13,17 +13,17 @@ import (
 func Run() error {
 	fmt.Println("Starting Maoni...")
 
-	database, err := db.NewDatabase()
+	store, err := db.NewDatabase()
 	if err != nil {
 		fmt.Println("Failed to connect to database")
 	}
-	err = database.MigrateDB()
+	err = store.MigrateDB()
 	if err != nil {
 		log.Error("failed to setup database")
 		return err
 	}
 
-	commentService := comment.NewService(database)
+	commentService := comment.NewService(store)
 	fmt.Println(commentService.GetComment(context.Background(), ""))
 
 	return nil
