@@ -19,12 +19,16 @@ func (d *Database) MigrateDB() error {
 	}
 	m, err := migrate.NewWithDatabaseInstance(
 		"file:///migrations",
-		"postgres", driver)
+		"postgres",
+		driver,
+	)
 	if err != nil {
 		log.Error(err.Error())
 		return err
 	}
-	m.Up()
-
+	if err := m.Up(); err != nil {
+		return fmt.Errorf("could not apply migrations: %w", err)
+	}
+	fmt.Println("successfully applied migrations")
 	return nil
 }
