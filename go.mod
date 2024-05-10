@@ -12,6 +12,7 @@ require (
 require github.com/golang-jwt/jwt/v4 v4.5.0 // indirect
 
 require (
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/gorilla/mux v1.8.1
 	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
