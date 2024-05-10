@@ -55,6 +55,13 @@ func (d *Database) PostComment(ctx context.Context, cmt comment.Comment) (commen
 // GetComment - retrieves a comment from the database by ID
 func (d *Database) GetComment(ctx context.Context, uuid string) (comment.Comment, error) {
 	var cmtRow CommentRow
+
+	// * timeout test
+	// _, err := d.Client.ExecContext(ctx, "Select pg_sleep(16)")
+	// if err != nil {
+	// 	return comment.Comment{}, err
+	// }
+
 	row := d.Client.QueryRowContext(
 		ctx,
 		`SELECT id, slug, body, author
