@@ -26,9 +26,7 @@ func (d *Database) MigrateDB() error {
 		log.Error(err.Error())
 		return err
 	}
-	if err := m.Up(); err != nil {
-		return fmt.Errorf("could not apply migrations: %w", err)
-	}
+	m.Up()
 	fmt.Println("successfully applied migrations")
 	return nil
 }

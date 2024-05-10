@@ -23,6 +23,8 @@ func NewHandler(service CommentService) *Handler {
 		Service: service,
 	}
 	h.Router = mux.NewRouter()
+	h.Router.Use(JSONMiddleware)
+	h.Router.Use(LoggingMiddleware)
 	h.SetupRoutes()
 	h.Server = &http.Server{
 		Addr:    "0.0.0.0:8080",
@@ -41,6 +43,10 @@ func (h *Handler) SetupRoutes() {
 	h.Router.HandleFunc("/api/v1/comment/{id}", h.GetComment).Methods("GET")
 	h.Router.HandleFunc("/api/v1/comment/{id}", h.UpdateComment).Methods("PUT")
 	h.Router.HandleFunc("/api/v1/comment/{id}", h.DeleteComment).Methods("DELETE")
+
+	// * versioning
+	//  h.Router.HandleFunc("/api/v2/comment", h.PostCommentV2).Methods("POST")
+
 }
 
 func (h *Handler) Serve() error {
