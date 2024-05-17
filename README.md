@@ -9,6 +9,7 @@ Maoni is a Go API template that follows the clean architecture principles. It in
 - [API Endpoints](#api-endpoints)
 - [Authorization](#authorization)
 - [Contributing](#contributing)
+- [License](#license)
 
 ## Prerequisites
 
@@ -83,3 +84,7 @@ These requests require authentication:
 ## Contributing
 
 If you'd like to contribute, please fork the repository and use a feature branch. Pull requests are warmly welcome.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
